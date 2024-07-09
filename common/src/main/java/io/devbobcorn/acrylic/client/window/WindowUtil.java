@@ -10,11 +10,13 @@ public class WindowUtil {
         if (Platform.get() == Platform.WINDOWS) {
             return innerGetWindowHandle(windowId);
         } else {
-            throw new UnsupportedOperationException("Only Windows is supported!");
+            // Return 0 for non-Windows platforms
+            return 0L;
         }
     }
 
     private static long innerGetWindowHandle(long windowId) {
+
         return GLFWNativeWin32.glfwGetWin32Window(windowId);
     }
 

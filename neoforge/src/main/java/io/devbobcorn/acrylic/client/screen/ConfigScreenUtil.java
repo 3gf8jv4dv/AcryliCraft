@@ -16,6 +16,7 @@ import java.awt.*;
 import java.util.function.Consumer;
 
 import static net.minecraft.network.chat.Component.translatable;
+import org.lwjgl.system.Platform;
 
 /**
  * Mod Config screen helper
@@ -124,7 +125,7 @@ public final class ConfigScreenUtil {
     private static ConfigCategory categoryWin11Specific() {
 
         // Check OS compatibility
-        if (!NtDllLib.checkCompatibility()) {
+        if (Platform.get() != Platform.WINDOWS || !NtDllLib.checkCompatibility()) {
 
             return ConfigCategory.createBuilder()
                     .name(translatable("acrylic.config.win11_specific"))
