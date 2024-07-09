@@ -8,6 +8,8 @@ public class AcrylicMod {
 
     private static boolean transparencyEnabled = false;
 
+    private static boolean transparencyInitFailed = false;
+
     /**
      *  Check whether window transparency is enabled.
      */
@@ -21,6 +23,21 @@ public class AcrylicMod {
      */
     public static void setTransparencyEnabled(boolean transparent) {
         transparencyEnabled = transparent;
+    }
+
+    /**
+     *  Check whether window transparency initialization failed.
+     */
+    public static boolean getTransparencyInitFailed() {
+        return transparencyInitFailed;
+    }
+
+    /**
+     *  Record whether window transparency initialization failed.
+     *  This is supposed to be called only once, upon window creation.
+     */
+    public static void setTransparencyInitFailed(boolean failed) {
+        transparencyInitFailed = failed;
     }
 
     /**
