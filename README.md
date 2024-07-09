@@ -5,7 +5,7 @@ Apply Fluent Design materials to Minecraft window.
 
 ## System Requirement
 
-This mod requires **Windows 11 Version 22H2** (OS build 22621) or above to function correctly, otherwise the Fluent Design materials will not be applied and the background will be fully transparent.
+Fluent design materials, dark mode and border customization are exclusive to **Windows 11 Version 22H2** (OS build 22621) or above. However, you can still utilize this mod on other operating systems to get the window background transparent, and then use other tools(e.g. [Blur My Shell](https://extensions.gnome.org/extension/3193/blur-my-shell/) for GNOME) for further customizations.
 
 ## Mod Dependencies
 
