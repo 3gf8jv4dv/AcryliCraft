@@ -86,16 +86,21 @@ public class WindowMixin implements IWindow {
 
         AcrylicMod.setTransparencyEnabled(transparent);
 
-        // Check OS
-        if (Util.getPlatform() != Util.OS.WINDOWS) {
-            return;
+        var config = AcrylicConfig.getInstance();
+
+        // Check if transparent framebuffer requested but failed to initialize
+        if ((boolean) config.getValue(AcrylicConfig.TRANSPARENT_WINDOW) && !transparent) {
+            AcrylicMod.setTransparencyInitFailed(true);
         }
 
-        // Store window handle for later use
-        AcrylicMod.setWindowHandle(WindowUtil.getWindowHandle(window));
+        // Check OS
+        if (Util.getPlatform() == Util.OS.WINDOWS) {
+            // Store window handle for later use
+            AcrylicMod.setWindowHandle(WindowUtil.getWindowHandle(window));
 
-        // Apply Win11-Specific window setup
-        AcrylicConfig.getInstance().ApplyWin11Specific();
+            // Apply Win11-Specific window setup
+            config.ApplyWin11Specific();
+        }
     }
 
     @Override

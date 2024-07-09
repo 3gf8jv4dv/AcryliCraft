@@ -37,5 +37,8 @@
   "acrylic.config.customize_border": "Customize Border",
   "acrylic.config.customize_border.description": "Whether to enable window border customization.",
   "acrylic.config.border_color": "Border Color",
-  "acrylic.config.border_color.description": "Color of window border."
+  "acrylic.config.border_color.description": "Color of window border.",
+
+  "acrylic.hint.transparency_init_failure": "Failed to initialize, make sure FML earlyWindowControl is turned off.",
+  "acrylic.hint.restart_for_transparency": "Please restart the game to enable transparent window."
 }

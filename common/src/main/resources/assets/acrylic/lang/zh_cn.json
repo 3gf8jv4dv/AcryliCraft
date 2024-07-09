@@ -37,5 +37,8 @@
   "acrylic.config.customize_border": "自定义边框",
   "acrylic.config.customize_border.description": "是否启用边框自定义。",
   "acrylic.config.border_color": "边框颜色",
-  "acrylic.config.border_color.description": "窗口边框的颜色。"
+  "acrylic.config.border_color.description": "窗口边框的颜色。",
+
+  "acrylic.hint.transparency_init_failure": "未能成功初始化，请确保FML的earlyWindowControl已关闭。",
+  "acrylic.hint.restart_for_transparency": "请重启游戏以使透明窗口生效。"
 }
