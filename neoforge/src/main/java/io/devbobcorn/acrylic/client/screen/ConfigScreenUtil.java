@@ -11,6 +11,7 @@ import io.devbobcorn.acrylic.nativelib.DwmApiLib.EnumWAValue;
 import io.devbobcorn.acrylic.nativelib.NtDllLib;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
+import org.lwjgl.system.Platform;
 
 import java.awt.*;
 import java.util.function.Consumer;
@@ -124,7 +125,7 @@ public final class ConfigScreenUtil {
     private static ConfigCategory categoryWin11Specific() {
 
         // Check OS compatibility
-        if (!NtDllLib.checkCompatibility()) {
+        if (Platform.get() != Platform.WINDOWS || !NtDllLib.checkCompatibility()) {
 
             return ConfigCategory.createBuilder()
                     .name(translatable("acrylic.config.win11_specific"))
