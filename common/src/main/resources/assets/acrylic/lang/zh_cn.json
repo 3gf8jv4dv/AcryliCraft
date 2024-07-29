@@ -10,6 +10,8 @@
   "acrylic.config.show_debug_info.description": "是否在主菜单界面上显示关于设备和窗口的调试信息。",
   "acrylic.config.transparent_window": "使用透明背景",
   "acrylic.config.transparent_window.description": "是否启用透明窗口并移除原本的全景图，如果要使用全窗口的亚克力等背景则必须开启此项。（启用后重启游戏生效。）",
+  "acrylic.config.remove_screen_background": "移除界面背景",
+  "acrylic.config.remove_screen_background.description": "使用透明窗口时，是否移除界面上的深色背景。",
 
   "acrylic.config.win11_specific": "Win11 相关配置",
 

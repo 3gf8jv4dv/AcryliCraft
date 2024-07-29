@@ -43,6 +43,7 @@ public class AcrylicConfig extends Settings<AcrylicConfig> {
 
     public static final String SHOW_DEBUG_INFO           = "show_debug_info";
     public static final String TRANSPARENT_WINDOW        = "transparent_window";
+    public static final String REMOVE_SCREEN_BACKGROUND  = "remove_screen_background";
 
     public static final String USE_IMMERSIVE_DARK_MODE   = "use_immersive_dark_mode";
     public static final String SYNC_WITH_OS_THEME        = "sync_with_os_theme";
@@ -124,6 +125,10 @@ public class AcrylicConfig extends Settings<AcrylicConfig> {
 
         configValues.put( TRANSPARENT_WINDOW,
                 this.getMutable(TRANSPARENT_WINDOW, Boolean::parseBoolean, true)
+        );
+
+        configValues.put( REMOVE_SCREEN_BACKGROUND,
+                this.getMutable(REMOVE_SCREEN_BACKGROUND, Boolean::parseBoolean, true)
         );
 
         if (Platform.get() == Platform.WINDOWS && NtDllLib.checkCompatibility())
