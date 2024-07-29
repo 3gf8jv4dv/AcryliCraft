@@ -1,11 +1,10 @@
 package io.devbobcorn.acrylic.forge;
 
-import com.mojang.logging.LogUtils;
 import io.devbobcorn.acrylic.AcrylicMod;
 import io.devbobcorn.acrylic.client.screen.ConfigScreenUtil;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -22,7 +21,7 @@ public class AcrylicModNeoForge {
     static class AcrylicConfigScreenFactory implements IConfigScreenFactory {
 
         @Override
-        public @NotNull Screen createScreen(@NotNull Minecraft mc, @NotNull Screen screen) {
+        public @NotNull Screen createScreen(@NotNull ModContainer modContainer, @NotNull Screen screen) {
             return ConfigScreenUtil.create(screen);
         }
     }
