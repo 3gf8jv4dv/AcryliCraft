@@ -8,6 +8,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.ScreenEvent;
+import net.neoforged.neoforge.client.loading.NeoForgeLoadingOverlay;
 import org.lwjgl.opengl.GL11;
 
 @EventBusSubscriber(modid = AcrylicMod.MOD_ID, bus = EventBusSubscriber.Bus.GAME, value = Dist.CLIENT)
