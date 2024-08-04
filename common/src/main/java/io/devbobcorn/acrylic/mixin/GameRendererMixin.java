@@ -1,8 +1,7 @@
-package io.devbobcorn.acrylic.mixin.fabric;
+package io.devbobcorn.acrylic.mixin;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import io.devbobcorn.acrylic.AcrylicConfig;
-import io.devbobcorn.acrylic.AcrylicMod;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
@@ -18,26 +17,6 @@ public class GameRendererMixin {
 
     @Shadow
     Minecraft minecraft;
-
-    @Inject(
-            method = "render",
-            at = @At(
-                    value = "INVOKE",
-                    ordinal = 0,
-                    target = "Lnet/minecraft/client/gui/screens/Screen;renderWithTooltip(Lnet/minecraft/client/gui/GuiGraphics;IIF)V"
-            )
-    )
-    public void preScreenRender(DeltaTracker deltaTracker, boolean bl, CallbackInfo callback) {
-
-        if ((boolean) AcrylicConfig.getInstance().getValue(AcrylicConfig.TRANSPARENT_WINDOW)) {
-            if (minecraft != null && minecraft.level == null) {
-                // Vanilla will render the panorama to hide the pixels beneath,
-                // but we don't use panorama here so clear them up.
-                RenderSystem.clearColor(0, 0, 0, 0);
-                RenderSystem.clear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT, Minecraft.ON_OSX);
-            }
-        }
-    }
 
     @Inject(
             method = "render",
