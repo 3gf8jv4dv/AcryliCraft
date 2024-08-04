@@ -4,19 +4,20 @@ import dev.isxander.yacl3.api.*;
 import dev.isxander.yacl3.api.controller.BooleanControllerBuilder;
 import dev.isxander.yacl3.api.controller.ColorControllerBuilder;
 import dev.isxander.yacl3.api.controller.EnumControllerBuilder;
-import io.devbobcorn.acrylic.AcrylicConfig;
-import io.devbobcorn.acrylic.AcrylicMod;
-import io.devbobcorn.acrylic.nativelib.DwmApiLib;
-import io.devbobcorn.acrylic.nativelib.DwmApiLib.EnumWAValue;
-import io.devbobcorn.acrylic.nativelib.NtDllLib;
+
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
-import org.lwjgl.system.Platform;
+import static net.minecraft.network.chat.Component.translatable;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.function.Consumer;
 
-import static net.minecraft.network.chat.Component.translatable;
+import io.devbobcorn.acrylic.AcrylicConfig;
+import io.devbobcorn.acrylic.AcrylicMod;
+import io.devbobcorn.acrylic.nativelib.NtDllLib;
+import io.devbobcorn.acrylic.nativelib.DwmApiLib;
+import io.devbobcorn.acrylic.nativelib.DwmApiLib.EnumWAValue;
+import org.lwjgl.system.Platform;
 
 /**
  * Mod Config screen helper
@@ -110,6 +111,10 @@ public final class ConfigScreenUtil {
 
     private static ConfigCategory categoryGeneral() {
 
+        final Option<Boolean> removeScreenBackgroundOption = boolOption(AcrylicConfig.REMOVE_SCREEN_BACKGROUND, false,
+                AcrylicConfig.getInstance().getValue(AcrylicConfig.TRANSPARENT_WINDOW),
+                (val) -> { });
+
         return ConfigCategory.createBuilder()
                 .name(translatable("acrylic.config.general"))
 
@@ -117,7 +122,10 @@ public final class ConfigScreenUtil {
                 .option( boolOption(AcrylicConfig.SHOW_DEBUG_INFO, false, true, (val) -> { }) )
 
                 // Transparent window
-                .option( boolOption(AcrylicConfig.TRANSPARENT_WINDOW, true, true, (val) -> { }) )
+                .option( boolOption(AcrylicConfig.TRANSPARENT_WINDOW, true, true, removeScreenBackgroundOption::setAvailable) )
+
+                // Remove screen background
+                .option( removeScreenBackgroundOption )
 
                 .build();
     }
@@ -158,8 +166,8 @@ public final class ConfigScreenUtil {
 
                         // Sync with OS Theme
                         .option( boolOption(AcrylicConfig.SYNC_WITH_OS_THEME, true, true, (val) -> {
-                                    useImmersiveDarkModeOption.setAvailable(!val);
-                                }) )
+                            useImmersiveDarkModeOption.setAvailable(!val);
+                        }) )
 
                         // Use Immersive Dark Mode
                         .option( useImmersiveDarkModeOption )
@@ -188,9 +196,9 @@ public final class ConfigScreenUtil {
                         .name(translatable(AcrylicMod.MOD_ID + ".config.border"))
 
                         .option( boolOption(AcrylicConfig.HIDE_BORDER, false, true, (val) -> {
-                                    customBorderOption.setAvailable(!val);
-                                    borderColorOption.setAvailable(!val && (boolean) AcrylicConfig.getInstance().getValue(AcrylicConfig.CUSTOMIZE_BORDER));
-                                }) )
+                            customBorderOption.setAvailable(!val);
+                            borderColorOption.setAvailable(!val && (boolean) AcrylicConfig.getInstance().getValue(AcrylicConfig.CUSTOMIZE_BORDER));
+                        }) )
                         .option( customBorderOption )
                         .option( borderColorOption )
 

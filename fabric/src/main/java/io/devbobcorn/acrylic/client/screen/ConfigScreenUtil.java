@@ -111,6 +111,10 @@ public final class ConfigScreenUtil {
 
     private static ConfigCategory categoryGeneral() {
 
+        final Option<Boolean> removeScreenBackgroundOption = boolOption(AcrylicConfig.REMOVE_SCREEN_BACKGROUND, false,
+                AcrylicConfig.getInstance().getValue(AcrylicConfig.TRANSPARENT_WINDOW),
+                (val) -> { });
+
         return ConfigCategory.createBuilder()
                 .name(translatable("acrylic.config.general"))
 
@@ -118,7 +122,10 @@ public final class ConfigScreenUtil {
                 .option( boolOption(AcrylicConfig.SHOW_DEBUG_INFO, false, true, (val) -> { }) )
 
                 // Transparent window
-                .option( boolOption(AcrylicConfig.TRANSPARENT_WINDOW, true, true, (val) -> { }) )
+                .option( boolOption(AcrylicConfig.TRANSPARENT_WINDOW, true, true, removeScreenBackgroundOption::setAvailable) )
+
+                // Remove screen background
+                .option( removeScreenBackgroundOption )
 
                 .build();
     }
