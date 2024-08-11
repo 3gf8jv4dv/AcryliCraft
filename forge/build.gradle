@@ -1,26 +1,26 @@
-// Migration guide: https://docs.architectury.dev/api/migration/neoforge
 plugins {
-    id "com.github.johnrengelman.shadow" version "8.1.0"
+    id "com.github.johnrengelman.shadow" version "7.1.2"
 }
 
 architectury {
     platformSetupLoomIde()
-    neoForge()
+    forge()
 }
 
 loom {
     accessWidenerPath = project(":common").loom.accessWidenerPath
 
-    // Unlike Forge, NeoForge uses mods.toml to declare mixin configs.
-    // See https://github.com/neoforged/FancyModLoader/pull/31
+    forge {
+        convertAccessWideners = true
+        extraAccessWideners.add loom.accessWidenerPath.get().asFile.name
+
+        mixinConfig "acrylic-common.mixins.json"
+        mixinConfig "acrylic.mixins.json"
+    }
 }
 
 base {
-    archivesName = rootProject.archives_base_name + "-neoforge"
-}
-
-repositories {
-    maven { url "https://maven.neoforged.net/releases/" }
+    archivesName = rootProject.archives_base_name + "-forge"
 }
 
 configurations {
@@ -28,16 +28,16 @@ configurations {
     shadowCommon // Don't use shadow from the shadow plugin since it *excludes* files.
     compileClasspath.extendsFrom common
     runtimeClasspath.extendsFrom common
-    developmentNeoForge.extendsFrom common
+    developmentForge.extendsFrom common
 }
 
 dependencies {
-    neoForge "net.neoforged:neoforge:${rootProject.neoforge_version}"
+    forge "net.minecraftforge:forge:${rootProject.forge_version}"
     // Remove the next line if you don't want to depend on the API
     //modApi "dev.architectury:architectury-forge:${rootProject.architectury_version}"
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
-    shadowCommon(project(path: ":common", configuration: "transformProductionNeoForge")) { transitive = false }
+    shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
 
     modImplementation "dev.isxander.yacl:yet-another-config-lib-forge:${rootProject.yacl_version}"
 }

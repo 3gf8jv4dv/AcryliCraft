@@ -33,11 +33,10 @@ public class RenderTargetMixin {
             return;
         }
 
-        var _this = (RenderTarget) (Object) this;
-
         if (AcrylicMod.getFillMainRTAlpha()) {
 
             // Fill alpha channel for main render target (this buffer)
+            var _this = (RenderTarget) (Object) this;
             GlStateManager._glBindFramebuffer(GL30.GL_FRAMEBUFFER, _this.frameBufferId);
 
             RenderSystem.colorMask(false, false, false, true);

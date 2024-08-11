@@ -34,17 +34,20 @@ public class WindowMixin implements IWindow {
     // GLFW Window id
     private long window;
 
-    @Inject(
+    @Redirect(
             method = "<init>",
             remap = false, // Don't remap method name for constructors
             at = @At(
                     value = "INVOKE",
                     target = "Lorg/lwjgl/glfw/GLFW;glfwDefaultWindowHints()V",
-                    remap = false, // Don't remap method name for native methods
-                    shift = At.Shift.AFTER
+                    remap = false // Don't remap method name for native methods
             )
     )
-    public void glfwWindowHintInject(WindowEventHandler windowEventHandler, ScreenManager screenManager, DisplayData displayData, String string, String string2, CallbackInfo ci) {
+    public void glfwWindowHintRedirect() {
+
+        LOGGER.info("Applying default window hints...");
+
+        GLFW.glfwDefaultWindowHints();
 
         // Window hints applied to vanilla window:
 
@@ -79,7 +82,7 @@ public class WindowMixin implements IWindow {
     private void init(
             final WindowEventHandler handler, final ScreenManager manager,
             final DisplayData display, final String videoMode, final String title,
-            final CallbackInfo callback
+            final CallbackInfo ci
     ) {
         // Check if transparent frame buffer is enabled
         // See https://www.glfw.org/docs/3.3/window_guide.html#window_transparency
