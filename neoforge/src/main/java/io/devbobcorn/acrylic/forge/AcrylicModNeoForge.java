@@ -1,7 +1,7 @@
 package io.devbobcorn.acrylic.forge;
 
 import io.devbobcorn.acrylic.AcrylicMod;
-import io.devbobcorn.acrylic.client.screen.ConfigScreenUtil;
+import io.devbobcorn.acrylic.forge.client.screen.ConfigScreenUtil;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -9,9 +9,9 @@ import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.neoforged.neoforge.client.ConfigScreenHandler;
 
 @Mod(AcrylicMod.MOD_ID)
-public class AcrylicModForge {
+public class AcrylicModNeoForge {
 
-    public AcrylicModForge() {
+    public AcrylicModNeoForge() {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
     }
 

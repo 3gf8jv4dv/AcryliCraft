@@ -10,6 +10,8 @@
   "acrylic.config.show_debug_info.description": "Render device and window information on title screen.",
   "acrylic.config.transparent_window": "Transparent background",
   "acrylic.config.transparent_window.description": "Whether to enable transparent game window and remove background panorama. This is required if you want use backdrops such as Acrylic for the whole window. (Enabling this will take effect after a restart.)",
+  "acrylic.config.remove_screen_background": "Remove screen background",
+  "acrylic.config.remove_screen_background.description": "Whether to remove dark background on screens when transparent window is enabled.",
 
   "acrylic.config.win11_specific": "Win11-Specific Config",
 
@@ -37,5 +39,8 @@
   "acrylic.config.customize_border": "Customize Border",
   "acrylic.config.customize_border.description": "Whether to enable window border customization.",
   "acrylic.config.border_color": "Border Color",
-  "acrylic.config.border_color.description": "Color of window border."
+  "acrylic.config.border_color.description": "Color of window border.",
+
+  "acrylic.hint.transparency_init_failure": "Failed to initialize, make sure FML earlyWindowControl is turned off.",
+  "acrylic.hint.restart_for_transparency": "Please restart the game to enable transparent window."
 }

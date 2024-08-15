@@ -2,24 +2,26 @@
   "acrylic.mod_name": "AcryliCraft",
 
   "acrylic.config.unsupported": "操作系统不受支持 >_<",
-  "acrylic.config.unsupported.win11_only": "仅Windows 11 22H2(build 22621)及以上版本才能够使用这些设置。",
+  "acrylic.config.unsupported.win11_only": "仅 Windows 11 22H2 (build 22621) 及以上版本才能使用这些设置。",
 
   "acrylic.config.general": "通用配置",
 
   "acrylic.config.show_debug_info": "显示调试信息",
   "acrylic.config.show_debug_info.description": "是否在主菜单界面上显示关于设备和窗口的调试信息。",
   "acrylic.config.transparent_window": "使用透明背景",
-  "acrylic.config.transparent_window.description": "是否启用透明窗口并且移除原本的全景图，如果要使用全窗口的亚克力等背景则必须开启此项。（启用后重启游戏生效。）",
+  "acrylic.config.transparent_window.description": "是否启用透明窗口并移除原本的全景图，如果要使用全窗口的亚克力等背景则必须开启此项。（启用后重启游戏生效。）",
+  "acrylic.config.remove_screen_background": "移除界面背景",
+  "acrylic.config.remove_screen_background.description": "使用透明窗口时，是否移除界面上的深色背景。",
 
-  "acrylic.config.win11_specific": "Win11相关配置",
+  "acrylic.config.win11_specific": "Win11 相关配置",
 
   "acrylic.config.window": "窗口设置",
   "acrylic.config.sync_with_os_theme": "同步系统主题",
   "acrylic.config.sync_with_os_theme.description": "是否与系统黑暗模式保持同步。",
   "acrylic.config.use_immersive_dark_mode": "黑暗模式",
-  "acrylic.config.use_immersive_dark_mode.description": "是否给窗口启用黑暗模式。",
+  "acrylic.config.use_immersive_dark_mode.description": "是否为窗口启用黑暗模式。",
   "acrylic.config.system_backdrop_type": "窗口材质",
-  "acrylic.config.system_backdrop_type.description": "给窗口更换流畅设计材质。",
+  "acrylic.config.system_backdrop_type.description": "为窗口更换流畅设计材质。",
   "acrylic.config.system_backdrop_type.type.auto": "自动",
   "acrylic.config.system_backdrop_type.type.none": "无背景",
   "acrylic.config.system_backdrop_type.type.mica": "云母",
@@ -35,7 +37,10 @@
   "acrylic.config.hide_border": "隐藏边框",
   "acrylic.config.hide_border.description": "是否渲染窗口边框。",
   "acrylic.config.customize_border": "自定义边框",
-  "acrylic.config.customize_border.description": "是否启用边框自定义。",
+  "acrylic.config.customize_border.description": "是否启用自定义边框。",
   "acrylic.config.border_color": "边框颜色",
-  "acrylic.config.border_color.description": "窗口边框的颜色。"
+  "acrylic.config.border_color.description": "窗口边框的颜色。",
+
+  "acrylic.hint.transparency_init_failure": "未能成功初始化，请确保 FML 的 earlyWindowControl 已关闭。",
+  "acrylic.hint.restart_for_transparency": "请重启游戏以使透明窗口生效。"
 }

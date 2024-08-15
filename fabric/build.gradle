@@ -36,7 +36,7 @@ dependencies {
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
 
-    modImplementation "dev.isxander.yacl:yet-another-config-lib-fabric:${rootProject.yacl_version}"
+    modImplementation "dev.isxander:yet-another-config-lib:${rootProject.yacl_fabric_version}"
     modImplementation "com.terraformersmc:modmenu:${rootProject.mod_menu_version}"
 }
 

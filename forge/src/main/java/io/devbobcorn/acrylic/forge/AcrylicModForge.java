@@ -1,7 +1,7 @@
 package io.devbobcorn.acrylic.forge;
 
 import io.devbobcorn.acrylic.AcrylicMod;
-import io.devbobcorn.acrylic.client.screen.ConfigScreenUtil;
+import io.devbobcorn.acrylic.forge.client.screen.ConfigScreenUtil;
 import net.minecraftforge.client.ConfigScreenHandler;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;

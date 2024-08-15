@@ -6,6 +6,8 @@
   "client": [
     "WindowMixin",
     "TitleScreenMixin",
+    "GameRendererMixin",
+    "ScreenMixin",
     "PanoramaRendererMixin",
     "RenderTargetMixin"
   ],

@@ -1,4 +1,4 @@
-package io.devbobcorn.acrylic.client.screen;
+package io.devbobcorn.acrylic.fabric.client.screen;
 
 import dev.isxander.yacl3.api.*;
 import dev.isxander.yacl3.api.controller.BooleanControllerBuilder;
@@ -17,6 +17,7 @@ import io.devbobcorn.acrylic.AcrylicMod;
 import io.devbobcorn.acrylic.nativelib.NtDllLib;
 import io.devbobcorn.acrylic.nativelib.DwmApiLib;
 import io.devbobcorn.acrylic.nativelib.DwmApiLib.EnumWAValue;
+import org.lwjgl.system.Platform;
 
 /**
  * Mod Config screen helper
@@ -110,6 +111,10 @@ public final class ConfigScreenUtil {
 
     private static ConfigCategory categoryGeneral() {
 
+        final Option<Boolean> removeScreenBackgroundOption = boolOption(AcrylicConfig.REMOVE_SCREEN_BACKGROUND, false,
+                AcrylicConfig.getInstance().getValue(AcrylicConfig.TRANSPARENT_WINDOW),
+                (val) -> { });
+
         return ConfigCategory.createBuilder()
                 .name(translatable("acrylic.config.general"))
 
@@ -117,7 +122,10 @@ public final class ConfigScreenUtil {
                 .option( boolOption(AcrylicConfig.SHOW_DEBUG_INFO, false, true, (val) -> { }) )
 
                 // Transparent window
-                .option( boolOption(AcrylicConfig.TRANSPARENT_WINDOW, true, true, (val) -> { }) )
+                .option( boolOption(AcrylicConfig.TRANSPARENT_WINDOW, true, true, removeScreenBackgroundOption::setAvailable) )
+
+                // Remove screen background
+                .option( removeScreenBackgroundOption )
 
                 .build();
     }
@@ -125,7 +133,7 @@ public final class ConfigScreenUtil {
     private static ConfigCategory categoryWin11Specific() {
 
         // Check OS compatibility
-        if (!NtDllLib.checkCompatibility()) {
+        if (Platform.get() != Platform.WINDOWS || !NtDllLib.checkCompatibility()) {
 
             return ConfigCategory.createBuilder()
                     .name(translatable("acrylic.config.win11_specific"))
