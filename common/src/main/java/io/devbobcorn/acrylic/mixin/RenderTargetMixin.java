@@ -35,20 +35,24 @@ public class RenderTargetMixin {
 
         var _this = (RenderTarget) (Object) this;
 
-        if (AcrylicMod.getFillMainRTAlpha()) {
+        if (_this == Minecraft.getInstance().getMainRenderTarget()) {
+            if (AcrylicMod.getFillMainRTAlpha()) {
+                // Fill alpha channel for main render target (this buffer)
+                GlStateManager._glBindFramebuffer(GL30.GL_FRAMEBUFFER, _this.frameBufferId);
 
-            // Fill alpha channel for main render target (this buffer)
-            GlStateManager._glBindFramebuffer(GL30.GL_FRAMEBUFFER, _this.frameBufferId);
+                RenderSystem.colorMask(false, false, false, true);
 
-            RenderSystem.colorMask(false, false, false, true);
+                RenderSystem.clearColor(0, 0, 0, 1);
+                RenderSystem.clear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT, Minecraft.ON_OSX);
 
-            RenderSystem.clearColor(0, 0, 0, 1);
-            RenderSystem.clear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT, Minecraft.ON_OSX);
+                GlStateManager._glBindFramebuffer(GL30.GL_FRAMEBUFFER, 0);
+            }
 
-            GlStateManager._glBindFramebuffer(GL30.GL_FRAMEBUFFER, 0);
+            // Enable alpha when blitting
+            GlStateManager._colorMask(r, g, b, true);
+        } else {
+            // Not main render target, don't change vanilla behaviour
+            GlStateManager._colorMask(r, g, b, a);
         }
-
-        // Enable alpha when blitting
-        GlStateManager._colorMask(r, g, b, true);
     }
 }
