@@ -1,21 +1,56 @@
 package io.devbobcorn.acrylic.mixin;
 
-import io.devbobcorn.acrylic.AcrylicMod;
 import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL30;
+import org.lwjgl.opengl.GL32C;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import com.mojang.blaze3d.pipeline.RenderTarget;
 import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-
 import net.minecraft.client.Minecraft;
 
-@Mixin(RenderTarget.class)
+import io.devbobcorn.acrylic.AcrylicMod;
+
+// Set priority to 800 to make sure this injection is called before
+// the one in Sodium's RenderTargetMixin does, their mixin then does
+// an optimized screen blit and cancels blitToScreen call.
+// https://github.com/CaffeineMC/sodium-fabric/blob/dev/common/src/main/java/net/caffeinemc/mods/sodium/mixin/features/render/compositing/RenderTargetMixin.java
+@Mixin(value = RenderTarget.class, priority = 800)
 public class RenderTargetMixin {
 
+    @Shadow
+    public int frameBufferId;
+
+    @Inject(method = "blitToScreen(IIZ)V", at = @At("HEAD"))
+    public void blitToScreen(int width, int height, boolean disableBlend, CallbackInfo ci) {
+
+        if (!AcrylicMod.getTransparencyEnabled()) {
+            // Window transparency is not enabled, don't change vanilla behaviour
+            return;
+        }
+
+        if (disableBlend && AcrylicMod.getFillMainRTAlpha()) { // For the final main RT blit, disableBlend is always true
+            if ((Object) this == Minecraft.getInstance().getMainRenderTarget()) {
+                // Fill alpha channel for main render target
+                GL32C.glBindFramebuffer(GL32C.GL_DRAW_FRAMEBUFFER, this.frameBufferId);
+                // Use GLStateManager to make sure cached current color mask is updated
+                GlStateManager._colorMask(false, false, false, true);
+                GL11.glClearColor(0, 0, 0, 1);
+                GlStateManager._clear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT, Minecraft.ON_OSX);
+                GL32C.glBindFramebuffer(GL32C.GL_DRAW_FRAMEBUFFER, 0);
+
+                // Reset GL Clear color in case Sodium replaces the blit procedure
+                GlStateManager._colorMask(true, true, true, true);
+            }
+        }
+    }
+
+    // This redirect will be bypassed if Sodium's RenderTargetMixin
+    // is applied, in which case we don't need to tweak color mask
     @Redirect(
             method = "_blitToScreen(IIZ)V",
             at = @At(
@@ -29,25 +64,10 @@ public class RenderTargetMixin {
         if (!AcrylicMod.getTransparencyEnabled()) {
             // Window transparency is not enabled, don't change vanilla behaviour
             GlStateManager._colorMask(r, g, b, a);
-
             return;
         }
 
-        var _this = (RenderTarget) (Object) this;
-
-        if (_this == Minecraft.getInstance().getMainRenderTarget()) {
-            if (AcrylicMod.getFillMainRTAlpha()) {
-                // Fill alpha channel for main render target (this buffer)
-                GlStateManager._glBindFramebuffer(GL30.GL_FRAMEBUFFER, _this.frameBufferId);
-
-                RenderSystem.colorMask(false, false, false, true);
-
-                RenderSystem.clearColor(0, 0, 0, 1);
-                RenderSystem.clear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT, Minecraft.ON_OSX);
-
-                GlStateManager._glBindFramebuffer(GL30.GL_FRAMEBUFFER, 0);
-            }
-
+        if ((Object) this == Minecraft.getInstance().getMainRenderTarget()) {
             // Enable alpha when blitting
             GlStateManager._colorMask(r, g, b, true);
         } else {
