@@ -63,7 +63,7 @@ public class WindowsThemeDetector {
 
     public synchronized void removeListener(@Nullable Consumer<Boolean> darkThemeListener) {
         listeners.remove(darkThemeListener);
-        if (listeners.isEmpty()) {
+        if (listeners.isEmpty() && this.detectorThread != null) {
             this.detectorThread.interrupt();
             this.detectorThread = null;
         }
