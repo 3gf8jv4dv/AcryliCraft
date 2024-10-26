@@ -45,15 +45,12 @@ public final class ConfigScreenUtil {
                 .name(translatable(AcrylicMod.MOD_ID + ".config." + key))
                 .description(OptionDescription.of(translatable(AcrylicMod.MOD_ID + ".config." + key + ".description")))
                 .controller(BooleanControllerBuilder::create)
-                .binding(
-                        defValue,
+                .stateManager(StateManager.createInstant(defValue,
                         () -> AcrylicConfig.getInstance().getValue(key),
                         value -> {
                             AcrylicConfig.getInstance().setValue(key, value);
                             valueCallback.accept(value);
-                        }
-                )
-                .instant(true)
+                        }))
                 .available(available)
                 .build();
     }
@@ -70,15 +67,13 @@ public final class ConfigScreenUtil {
                 .name(translatable(AcrylicMod.MOD_ID + ".config." + key))
                 .description(OptionDescription.of(translatable(AcrylicMod.MOD_ID + ".config." + key + ".description")))
                 .controller(ColorControllerBuilder::create)
-                .binding(
+                .stateManager(StateManager.createInstant(
                         defValue,
                         () -> new Color( AcrylicConfig.getInstance().getValue(key) ),
                         value -> {
                             AcrylicConfig.getInstance().setValue(key, value.getRGB());
                             valueCallback.accept(value);
-                        }
-                )
-                .instant(true)
+                        }))
                 .available(available)
                 .build();
     }
@@ -90,21 +85,19 @@ public final class ConfigScreenUtil {
                 .description(OptionDescription.of(translatable(AcrylicMod.MOD_ID + ".config." + key + ".description")))
                 .controller(option -> EnumControllerBuilder.create(option)
                         .enumClass(enumClass)
-                        .valueFormatter(type -> {
+                        .formatValue(type -> {
                             @SuppressWarnings("unchecked")
                             var t = (EnumWAValue<T>) type;
                             return translatable(AcrylicMod.MOD_ID + ".config." + key + ".type." + t.getTranslation());
                         })
                 )
-                .binding(
+                .stateManager(StateManager.createInstant(
                         defValue,
                         () -> AcrylicConfig.getInstance().getValue(key),
                         value -> {
                             AcrylicConfig.getInstance().setValue(key, value);
                             valueCallback.accept(value);
-                        }
-                )
-                .instant(true)
+                        }))
                 .available(available)
                 .build();
     }
