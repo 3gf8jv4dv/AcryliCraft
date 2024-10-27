@@ -1,5 +1,6 @@
 package io.devbobcorn.acrylic.client.rendering;
 
+import net.minecraft.client.renderer.CoreShaders;
 import org.joml.Matrix4f;
 
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -14,12 +15,12 @@ import net.minecraft.client.renderer.GameRenderer;
 
 public class GuiUtil {
 
-    @SuppressWarnings("null")
+    @SuppressWarnings({ "null", "resource" })
     public static void fillGradient(PoseStack poseStack, int x0, int y0, int x1, int y1, int z, int color0, int color1) {
         //RenderSystem.disableTexture();
         RenderSystem.enableBlend();
         RenderSystem.defaultBlendFunc();
-        RenderSystem.setShader(GameRenderer::getPositionColorShader);
+        RenderSystem.setShader(CoreShaders.POSITION_COLOR);
         Tesselator tesselator = Tesselator.getInstance();
         BufferBuilder bufferbuilder = tesselator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
         fillGradient(poseStack.last().pose(), bufferbuilder, x0, y0, x1, y1, z, color0, color1);
@@ -60,9 +61,9 @@ public class GuiUtil {
         innerBlit(poseStack.last().pose(), x0, x1, y0, y1, z, (u0 + 0.0F) / (float)uScale, (u0 + (float)w_) / (float)uScale, (v0 + 0.0F) / (float)vScale, (v0 + (float)h_) / (float)vScale);
     }
 
-    @SuppressWarnings("null")
+    @SuppressWarnings({ "null", "resource" })
     private static void innerBlit(Matrix4f pose, int x0, int x1, int y0, int y1, int z, float u0, float u1, float v0, float v1) {
-        RenderSystem.setShader(GameRenderer::getPositionTexShader);
+        RenderSystem.setShader(CoreShaders.POSITION_TEX);
         BufferBuilder bufferbuilder = Tesselator.getInstance().begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
         bufferbuilder.addVertex(pose, (float)x0, (float)y1, (float)z).setUv(u0, v1);
         bufferbuilder.addVertex(pose, (float)x1, (float)y1, (float)z).setUv(u1, v1);
