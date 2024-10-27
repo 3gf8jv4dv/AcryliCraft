@@ -37,7 +37,7 @@ public class ScreenEventHandler {
                 // Vanilla will render the panorama to hide the pixels beneath,
                 // but we don't use panorama here so clear them up.
                 RenderSystem.clearColor(0, 0, 0, 0);
-                RenderSystem.clear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT, Minecraft.ON_OSX);
+                RenderSystem.clear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
             }
         }
     }
