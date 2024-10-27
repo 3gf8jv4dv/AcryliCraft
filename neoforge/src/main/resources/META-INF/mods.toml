@@ -23,7 +23,7 @@ config = "acrylic.mixins.json"
 [[dependencies.acrylic]]
 modId="neoforge"
 mandatory=true
-versionRange="[20.1,)"
+versionRange="[20.2,)"
 ordering="NONE"
 side="CLIENT"
 
