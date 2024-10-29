@@ -4,7 +4,7 @@
     "acrylic.config.unsupported": "サポートされていない OS >_<",
     "acrylic.config.unsupported.win11_only": "Windows 11 22H2（ビルド 22621）以降が必要です。",
   
-    "acrylic.config.general": "一般の設定",
+    "acrylic.config.general": "一般設定",
   
     "acrylic.config.show_debug_info": "デバッグ情報を表示",
     "acrylic.config.show_debug_info.description": "タイトル画面にデバイスとウィンドウの情報を表示する。",
@@ -35,12 +35,12 @@
     "acrylic.config.window_corner_preference.type.round_small": "少し丸く",
     "acrylic.config.border": "ボーダーの設定",
     "acrylic.config.hide_border": "ボーダーを隠す",
-    "acrylic.config.hide_border.description": "ウインドウのボーダーをレンダリングするかどうか。",
+    "acrylic.config.hide_border.description": "ウインドウボーダーをレンダリングするかどうか。",
     "acrylic.config.customize_border": "ボーダーのカスタマイズ",
-    "acrylic.config.customize_border.description": "ウィンドウのボーダーのカスタマイズを有効にするかどうか。",
+    "acrylic.config.customize_border.description": "ウィンドウボーダーのカスタマイズを有効にするかどうか。",
     "acrylic.config.border_color": "ボーダーの色",
-    "acrylic.config.border_color.description": "ウィンドウのボーダーの色。",
+    "acrylic.config.border_color.description": "ウィンドウボーダーの色。",
   
-    "acrylic.hint.transparency_init_failure": "初期化に失敗しました。",
-    "acrylic.hint.restart_for_transparency": "FML earlyWindowControl がオフになっていることを確認してください。"
+    "acrylic.hint.transparency_init_failure": "初期化に失敗しました。FML earlyWindowControl がオフになっていることを確認してください。",
+    "acrylic.hint.restart_for_transparency": "透明ウィンドウを有効にするには、ゲームを再起動してください。"
 }
