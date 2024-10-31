@@ -1,0 +1,46 @@
+{
+    "acrylic.mod_name": "AcryliCraft",
+  
+    "acrylic.config.unsupported": "Unsupported OS >_<",
+    "acrylic.config.unsupported.win11_only": "Only Windows 11 22H2 (build 22621) or newer is supported.",
+  
+    "acrylic.config.general": "General Config",
+  
+    "acrylic.config.show_debug_info": "Show debug info",
+    "acrylic.config.show_debug_info.description": "Render device and window information on the title screen.",
+    "acrylic.config.transparent_window": "Transparent background",
+    "acrylic.config.transparent_window.description": "Whether to enable transparent game window and remove background panorama. This is required if you want to use backdrops such as acrylic for the whole window. Enabling this will take effect after a restart.",
+    "acrylic.config.remove_screen_background": "Remove screen background",
+    "acrylic.config.remove_screen_background.description": "Whether to remove dark background on screens when transparent window is enabled.",
+  
+    "acrylic.config.win11_specific": "Win11-Specific Config",
+  
+    "acrylic.config.window": "Window Settings",
+    "acrylic.config.sync_with_os_theme": "Sync with OS Theme",
+    "acrylic.config.sync_with_os_theme.description": "Whether to sync dark mode with the OS.",
+    "acrylic.config.use_immersive_dark_mode": "Immersive Dark Mode",
+    "acrylic.config.use_immersive_dark_mode.description": "Whether to enable dark mode for the window.",
+    "acrylic.config.system_backdrop_type": "Window Material",
+    "acrylic.config.system_backdrop_type.description": "Apply Fluent Design backdrops to the game window.",
+    "acrylic.config.system_backdrop_type.type.auto": "Auto",
+    "acrylic.config.system_backdrop_type.type.none": "None",
+    "acrylic.config.system_backdrop_type.type.mica": "Mica",
+    "acrylic.config.system_backdrop_type.type.acrylic": "Acrylic",
+    "acrylic.config.system_backdrop_type.type.tabbed": "MicaAlt",
+    "acrylic.config.window_corner_preference": "Window Corner",
+    "acrylic.config.window_corner_preference.description": "Tweak corner curvature of the window.",
+    "acrylic.config.window_corner_preference.type.default": "Default",
+    "acrylic.config.window_corner_preference.type.do_not_round": "Don't Round",
+    "acrylic.config.window_corner_preference.type.round": "Round",
+    "acrylic.config.window_corner_preference.type.round_small": "Small Round",
+    "acrylic.config.border": "Border Settings",
+    "acrylic.config.hide_border": "Hide Border",
+    "acrylic.config.hide_border.description": "Whether to render window border.",
+    "acrylic.config.customize_border": "Customise Border",
+    "acrylic.config.customize_border.description": "Whether to enable window border customisation.",
+    "acrylic.config.border_color": "Border Colour",
+    "acrylic.config.border_color.description": "Colour of window border.",
+  
+    "acrylic.hint.transparency_init_failure": "Failed to initialise; make sure FML earlyWindowControl is turned off.",
+    "acrylic.hint.restart_for_transparency": "Please restart the game to enable transparent window."
+}
