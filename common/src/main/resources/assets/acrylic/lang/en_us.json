@@ -7,9 +7,9 @@
   "acrylic.config.general": "General Config",
 
   "acrylic.config.show_debug_info": "Show debug info",
-  "acrylic.config.show_debug_info.description": "Render device and window information on title screen.",
+  "acrylic.config.show_debug_info.description": "Render device and window information on the title screen.",
   "acrylic.config.transparent_window": "Transparent background",
-  "acrylic.config.transparent_window.description": "Whether to enable transparent game window and remove background panorama. This is required if you want use backdrops such as Acrylic for the whole window. Enabling this will take effect after a restart.",
+  "acrylic.config.transparent_window.description": "Whether to enable transparent game window and remove background panorama. This is required if you want to use backdrops such as acrylic for the whole window. Enabling this will take effect after a restart.",
   "acrylic.config.remove_screen_background": "Remove screen background",
   "acrylic.config.remove_screen_background.description": "Whether to remove dark background on screens when transparent window is enabled.",
 
@@ -21,7 +21,7 @@
   "acrylic.config.use_immersive_dark_mode": "Immersive Dark Mode",
   "acrylic.config.use_immersive_dark_mode.description": "Whether to enable dark mode for the window.",
   "acrylic.config.system_backdrop_type": "Window Material",
-  "acrylic.config.system_backdrop_type.description": "Apply Fluent Design backdrops to game window.",
+  "acrylic.config.system_backdrop_type.description": "Apply Fluent Design backdrops to the game window.",
   "acrylic.config.system_backdrop_type.type.auto": "Auto",
   "acrylic.config.system_backdrop_type.type.none": "None",
   "acrylic.config.system_backdrop_type.type.mica": "Mica",
@@ -41,6 +41,6 @@
   "acrylic.config.border_color": "Border Color",
   "acrylic.config.border_color.description": "Color of window border.",
 
-  "acrylic.hint.transparency_init_failure": "Failed to initialize, make sure FML earlyWindowControl is turned off.",
+  "acrylic.hint.transparency_init_failure": "Failed to initialize; make sure FML earlyWindowControl is turned off.",
   "acrylic.hint.restart_for_transparency": "Please restart the game to enable transparent window."
 }
