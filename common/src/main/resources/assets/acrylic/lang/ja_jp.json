@@ -1,0 +1,46 @@
+{
+  "acrylic.mod_name": "AcryliCraft",
+
+  "acrylic.config.unsupported": "サポートされていない OS >_<",
+  "acrylic.config.unsupported.win11_only": "Windows 11 22H2（ビルド 22621）以降が必要です。",
+
+  "acrylic.config.general": "一般設定",
+
+  "acrylic.config.show_debug_info": "デバッグ情報を表示",
+  "acrylic.config.show_debug_info.description": "タイトル画面にデバイスとウィンドウの情報を表示する。",
+  "acrylic.config.transparent_window": "透明な背景",
+  "acrylic.config.transparent_window.description": "透明なゲームウィンドウを有効にして、背景のパノラマを削除するかどうか。ウィンドウ全体にアクリルなどの背景を使用する場合は、これが必要です。これを有効にすると、再起動後に有効になります。",
+  "acrylic.config.remove_screen_background": "画面の背景を削除する",
+  "acrylic.config.remove_screen_background.description": "透明ウィンドウが有効な場合に、画面の暗い背景を削除するかどうか。",
+
+  "acrylic.config.win11_specific": "Win11 固有の設定",
+
+  "acrylic.config.window": "ウィンドウの設定",
+  "acrylic.config.sync_with_os_theme": "OS テーマとの同期",
+  "acrylic.config.sync_with_os_theme.description": "ダークモードを OS と同期するかどうか。",
+  "acrylic.config.use_immersive_dark_mode": "没入型ダークモード",
+  "acrylic.config.use_immersive_dark_mode.description": "ウィンドウのダークモードを有効にするかどうか。",
+  "acrylic.config.system_backdrop_type": "ウィンドウ材質",
+  "acrylic.config.system_backdrop_type.description": "ゲームウィンドウに Fluent Design の背景を適用する。",
+  "acrylic.config.system_backdrop_type.type.auto": "自動",
+  "acrylic.config.system_backdrop_type.type.none": "なし",
+  "acrylic.config.system_backdrop_type.type.mica": "マイカ",
+  "acrylic.config.system_backdrop_type.type.acrylic": "アクリル",
+  "acrylic.config.system_backdrop_type.type.tabbed": "マイカアルト",
+  "acrylic.config.window_corner_preference": "角の形",
+  "acrylic.config.window_corner_preference.description": "ウィンドウの角の丸みタイプを調整します。",
+  "acrylic.config.window_corner_preference.type.default": "標準",
+  "acrylic.config.window_corner_preference.type.do_not_round": "四角",
+  "acrylic.config.window_corner_preference.type.round": "丸",
+  "acrylic.config.window_corner_preference.type.round_small": "少し丸く",
+  "acrylic.config.border": "ボーダーの設定",
+  "acrylic.config.hide_border": "ボーダーを隠す",
+  "acrylic.config.hide_border.description": "ウインドウボーダーをレンダリングするかどうか。",
+  "acrylic.config.customize_border": "ボーダーのカスタマイズ",
+  "acrylic.config.customize_border.description": "ウィンドウボーダーのカスタマイズを有効にするかどうか。",
+  "acrylic.config.border_color": "ボーダーの色",
+  "acrylic.config.border_color.description": "ウィンドウボーダーの色。",
+
+  "acrylic.hint.transparency_init_failure": "初期化に失敗しました。FML earlyWindowControl がオフになっていることを確認してください。",
+  "acrylic.hint.restart_for_transparency": "透明ウィンドウを有効にするには、ゲームを再起動してください。"
+}

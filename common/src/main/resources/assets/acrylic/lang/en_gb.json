@@ -36,11 +36,11 @@
   "acrylic.config.border": "Border Settings",
   "acrylic.config.hide_border": "Hide Border",
   "acrylic.config.hide_border.description": "Whether to render window border.",
-  "acrylic.config.customize_border": "Customize Border",
-  "acrylic.config.customize_border.description": "Whether to enable window border customization.",
-  "acrylic.config.border_color": "Border Color",
-  "acrylic.config.border_color.description": "Color of window border.",
+  "acrylic.config.customize_border": "Customise Border",
+  "acrylic.config.customize_border.description": "Whether to enable window border customisation.",
+  "acrylic.config.border_color": "Border Colour",
+  "acrylic.config.border_color.description": "Colour of window border.",
 
-  "acrylic.hint.transparency_init_failure": "Failed to initialize. Make sure FML earlyWindowControl is turned off.",
+  "acrylic.hint.transparency_init_failure": "Failed to initialise. Make sure FML earlyWindowControl is turned off.",
   "acrylic.hint.restart_for_transparency": "Please restart the game to enable transparent window."
 }
